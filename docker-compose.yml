@@ -1,0 +1,18 @@
+web:
+  build: .
+  ports:
+   - "8980:80"
+  links:
+  - db:db
+  environment:
+  - MYSQL_DB_USER=root
+  - MYSQL_DB_DB=typo3
+  volumes:
+  - "./fileadmin:/var/www/html/fileadmin"
+  - "./uploads:/var/www/html/uploads"
+db:
+  image: mysql
+  environment:
+  - MYSQL_ROOT_PASSWORD=12345123
+  volumes:
+  - "./data:/var/lib/mysql"
