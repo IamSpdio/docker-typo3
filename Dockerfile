@@ -25,7 +25,9 @@ RUN sed -i "s/max_execution_time = 30/max_execution_time = 240/g" /etc/php/7.0/a
 RUN sed -i "s/; max_input_vars = 1000/max_input_vars = 1500/g" /etc/php/7.0/apache2/php.ini
 RUN sed -i "s/'password' => '123456',/'password' => '12345123',/g" /var/www/html/typo3conf/LocalConfiguration.php
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 EXPOSE 80
+
 COPY  start.sh /start.sh
 RUN chmod +x /start.sh
 CMD ["/start.sh"]
